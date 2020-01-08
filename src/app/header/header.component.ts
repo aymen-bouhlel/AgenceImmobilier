@@ -9,6 +9,8 @@ export class HeaderComponent implements OnInit {
 
   title = 'Agence Immoblier';
 
+  isDisable = true;
+
   constructor() { }
 
   ngOnInit() {
