@@ -16,4 +16,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  onClick() {
+    alert('Hello world');
+    this.isDisable = false;
+  }
+
 }
