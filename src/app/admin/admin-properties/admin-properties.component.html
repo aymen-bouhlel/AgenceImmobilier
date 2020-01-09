@@ -62,7 +62,7 @@
         <!-- FOOTER -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-          <button type="button" class="btn btn-primary" type="submit">Enregistrer</button>
+          <button type="button" class="btn btn-primary" type="submit" [disabled]="propertiesForm.invalid">Enregistrer</button>
         </div>
       </form>
     </div>
