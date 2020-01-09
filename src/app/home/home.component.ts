@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropertiesService } from '../services/properties.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,22 +12,19 @@ export class HomeComponent implements OnInit, OnDestroy {
    // TABLEAU DES BIENS (IMMOBLIERS)
    properties = [];
 
+   propertiesSubscription: Subscription;
+
   constructor(private propertiesService: PropertiesService) {
 
   }
 
   ngOnInit() {
-    this.propertiesService.getProperties().subscribe(
+    this.propertiesSubscription = this.propertiesService.propertiesSubject.subscribe(
       (data: any) => {
         this.properties = data;
-      },
-      (error) => {
-        console.error(error);
-      },
-      () => {
-        console.log('Observable complete!');
       }
     );
+    this.propertiesService.emitProperties();
   }
 
   getSoldValue(index) {
@@ -38,7 +36,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    
+    this.propertiesSubscription.unsubscribe();
   }
 
 }
