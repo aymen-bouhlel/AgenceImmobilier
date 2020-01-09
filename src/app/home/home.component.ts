@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PropertiesService } from '../services/properties.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { PropertiesService } from '../services/properties.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
    // TABLEAU DES BIENS (IMMOBLIERS)
    properties = [];
@@ -16,14 +16,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.propertiesService.getProperties().then(
+    this.propertiesService.getProperties().subscribe(
       (data: any) => {
-        console.log(data);
         this.properties = data;
-      }
-    ).catch(
+      },
       (error) => {
         console.error(error);
+      },
+      () => {
+        console.log('Observable complete!');
       }
     );
   }
@@ -34,6 +35,10 @@ export class HomeComponent implements OnInit {
     } else {
       return 'green';
     }
+  }
+
+  ngOnDestroy() {
+    
   }
 
 }
