@@ -12,4 +12,10 @@ export class AdminPropertiesComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmitPropertiesForm(form: NgForm) {
+    // console.log(form.value);
+    const title = form.value['title'];
+    console.log(title);
+  }
+
 }
