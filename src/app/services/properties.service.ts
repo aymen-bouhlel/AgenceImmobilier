@@ -36,4 +36,9 @@ export class PropertiesService {
 
   getProperties() {}
 
+  // CREATION DES BIENS
+  createProperty(property) {
+    this.properties.push(property);
+  }
+
 }
