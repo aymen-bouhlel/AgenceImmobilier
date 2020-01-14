@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
+import type { Property } from '../interfaces/property';
 
 @Injectable({
   providedIn: 'root'
@@ -7,25 +8,9 @@ import { Observable, Subject } from 'rxjs';
 export class PropertiesService {
 
   // TABLEAU DES BIENS (IMMOBLIERS)
-  properties = [
-    {
-      title: 'Ma super maison',
-      category: 'Maison',
-      sold: true,                 // POUR DIR VENDU (TRUE) OU A VENDRE (FALSE)
-    },
-    {
-      title: 'Petite appertement',
-      category: 'Appartement',
-      sold: false,                 // POUR DIR VENDU (TRUE) OU A VENDRE (FALSE)
-    },
-    {
-      title: 'Belle villa',
-      category: 'Maison',
-      sold: true,                 // POUR DIR VENDU (TRUE) OU A VENDRE (FALSE)
-    }
-  ];
+  properties: Property[] ;
 
-  propertiesSubject = new Subject<any[]>();
+  propertiesSubject = new Subject<Property[]>();
 
   constructor() { }
 
@@ -36,8 +21,8 @@ export class PropertiesService {
 
   getProperties() {}
 
-  // CREATION D' BIEN
-  createProperty(property) {
+  // CREATION D'UN BIEN
+  createProperty(property: Property) {
     this.properties.push(property);
   }
 
@@ -48,7 +33,7 @@ export class PropertiesService {
   }
 
   // MODIFICATION D'UN BIEN
-  updateProperty(property, index) {
+  updateProperty(property: Property, index) {
     this.properties[index] = property;
     this.emitProperties();
   }
