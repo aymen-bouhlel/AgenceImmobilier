@@ -36,15 +36,21 @@ export class PropertiesService {
 
   getProperties() {}
 
-  // CREATION DES BIENS
+  // CREATION D' BIEN
   createProperty(property) {
     this.properties.push(property);
   }
 
-  // SUPPRIMER UN BIEN
+  // SUPPRESSION D'UN BIEN
   deleteProperty(index)  {
     this.properties.splice(index, 1);
     this.emitProperties();                  // mis à jour de tableau aprés la suppression d'un element
+  }
+
+  // MODIFICATION D'UN BIEN
+  updateProperty(property, index) {
+    this.properties[index] = property;
+    this.emitProperties();
   }
 
 }
