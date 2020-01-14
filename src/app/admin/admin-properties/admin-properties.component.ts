@@ -50,4 +50,9 @@ export class AdminPropertiesComponent implements OnInit {
     this.propertiesForm.reset();
   }
 
+  // SUPPRIMER UN BIEN
+  onDeleteProperty(index) {
+    this.propertiesService.deleteProperty(index);
+  }
+
 }
