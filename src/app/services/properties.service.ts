@@ -43,6 +43,7 @@ export class PropertiesService {
   // SUPPRESSION D'UN BIEN
   deleteProperty(index)  {
     this.properties.splice(index, 1);
+    this.saveProperties();
     this.emitProperties();                  // mis à jour de tableau aprés la suppression d'un element
   }
 
