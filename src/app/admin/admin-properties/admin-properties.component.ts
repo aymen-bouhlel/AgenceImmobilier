@@ -78,6 +78,9 @@ export class AdminPropertiesComponent implements OnInit {
 
   // CONFIRMATION DE SUPPRESSION DES BIENS
   onConfirmDeleteProperty() {
+    if (this.properties[this.indexToRemove].photo && this.properties[this.indexToRemove].photo !== '') {
+      this.propertiesService.removeFile(this.properties[this.indexToRemove].photo);
+    }
     this.propertiesService.deleteProperty(this.indexToRemove);
     $('#deletePropertyModal').modal('hide');
   }
