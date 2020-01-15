@@ -29,6 +29,7 @@ export class AdminPropertiesComponent implements OnInit {
         this.properties = data;
       }
     );
+    this.propertiesService.getProperties();
     this.propertiesService.emitProperties();
   }
 
