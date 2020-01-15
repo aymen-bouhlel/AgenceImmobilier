@@ -92,7 +92,7 @@
           <div class="form-group">
             <input type="text" placeholder="Prix" class="form-control" formControlName="price">
           </div>
-          <!-- UPLOAD IMAGE -->
+          <!-- FILE UPLOAD -->
           <div class="form-row">
             <div class="col-9">
               <div class="input-group mb-3">
@@ -104,7 +104,7 @@
             </div>
             <!-- SPINNER -->
             <div class="col-3">
-              <div class="spinner-border text-primary" role="status" *ngIf="photoUploading">
+              <div class="spinner-border text-primary" *ngIf="photoUploading" role="status">
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
