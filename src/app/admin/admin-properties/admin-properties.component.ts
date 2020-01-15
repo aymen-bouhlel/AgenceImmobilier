@@ -67,6 +67,7 @@ export class AdminPropertiesComponent implements OnInit {
   resetForm() {
     this.editMode = false;
     this.propertiesForm.reset();
+    this.photoUrl = '';
   }
 
   // SUPPRIMER UN BIEN
@@ -92,6 +93,7 @@ export class AdminPropertiesComponent implements OnInit {
     this.propertiesForm.get('description').setValue(property.description ? property.description : '');
     this.propertiesForm.get('price').setValue(property.price);
     this.propertiesForm.get('sold').setValue(property.sold);
+    this.photoUrl = property.photo ? property.photo : '';
     // CHERCHER DANS LE TABLEAU PROPERTIES L'INDEX DE BIEN
     const index = this.properties.findIndex(
       (propertyEl) => {

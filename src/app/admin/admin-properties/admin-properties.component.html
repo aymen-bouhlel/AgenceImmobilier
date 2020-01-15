@@ -9,39 +9,36 @@
   <div class="row">
     <!-- AFFICHER LA LISTE DES BIENS -->
     <div *ngFor="let property of properties; let i = index" class="col-12 shadow-sm p-4 mb-3 bg-light">
-      <!-- PHOTOS -->
-      <div class="row">
-        <div class="col-3">
-          <!-- <div *ngFor="let photo of property.photos; let first = first">
-            <img *ngIf="first" [src]="photo" class="w-100">
-          </div> -->
-        </div>
-        <!-- TITLE -->
-        <div class="col-9">
-          <div class="d-flex">
-            <h3 class="font-weight-normal">{{ property.title }}</h3>
-            <div class="ml-auto">
-              <button class="btn btn-primary m-1" type="button" (click)="onEditProperty(property)"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-danger m-1" type="button" (click)="onDeleteProperty(i)"><i class="fas fa-trash-alt"></i></button>
-            </div>
+        <div class="row">
+          <!-- PHOTO -->
+          <div class="col-3">
+            <img *ngIf="property.photo && property.photo !== '' " [src]="property.photo" alt="" class="w-100">
           </div>
-          <!-- CATEGORY -->
-          <p>
-            {{ property.category }}<span *ngIf="property.surface && property.surface !== ''"> de {{ property.surface }} m²</span><span *ngIf="property.rooms && property.rooms !== ''">, {{ property.rooms }} pièce(s)</span>.
-          </p>
-          <!-- PRICE -->
-          <p *ngIf="property.price && property.price !== ''">
-            {{ property.price }} €
-          </p>
-          <!-- STATUS DE BIEN -->
-          <p>
-            <span *ngIf="property.sold" class="text-success">Vendu !</span>
-            <span *ngIf="!property.sold" class="text-danger">A vendre</span>
-          </p>
+          <!-- TITLE -->
+          <div class="col-9">
+            <div class="d-flex">
+              <h3 class="font-weight-normal">{{ property.title }}</h3>
+              <div class="ml-auto">
+                <button class="btn btn-primary m-1" type="button" (click)="onEditProperty(property)"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-danger m-1" type="button" (click)="onDeleteProperty(i)"><i class="fas fa-trash-alt"></i></button>
+              </div>
+            </div>
+            <!-- CATEGORY -->
+            <p>
+              {{ property.category }}<span *ngIf="property.surface && property.surface !== ''"> de {{ property.surface }} m²</span><span *ngIf="property.rooms && property.rooms !== ''">, {{ property.rooms }} pièce(s)</span>.
+            </p>
+            <!-- PRICE -->
+            <p *ngIf="property.price && property.price !== ''">
+              {{ property.price }} €
+            </p>
+            <!-- STATUS DE BIEN -->
+            <p>
+              <span *ngIf="property.sold" class="text-success">Vendu !</span>
+              <span *ngIf="!property.sold" class="text-danger">A vendre</span>
+            </p>
+          </div>
         </div>
-      </div>
     </div>
-
   </div>
 </div>
 
@@ -91,6 +88,10 @@
           <!-- PRIX -->
           <div class="form-group">
             <input type="text" placeholder="Prix" class="form-control" formControlName="price">
+          </div>
+          <!-- FFICHE DE L'IMAGE -->
+          <div *ngIf="photoUrl && photoUrl !== '' " class="d-flex mb-3">
+            <img [src]="photoUrl" alt="" class="w-50 mx-auto">
           </div>
           <!-- FILE UPLOAD -->
           <div class="form-row">
