@@ -47,6 +47,7 @@ export class AdminPropertiesComponent implements OnInit {
 
   onSubmitPropertiesForm() {
     const newProperty: Property = this.propertiesForm.value;
+    newProperty.sold = this.propertiesForm.get('sold').value ? this.propertiesForm.get('sold').value : false;
     if (this.editMode) {
       this.propertiesService.updateProperty(newProperty, this.indexToUpdate);
     } else {

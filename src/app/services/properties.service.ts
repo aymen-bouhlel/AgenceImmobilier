@@ -49,8 +49,14 @@ export class PropertiesService {
 
   // MODIFICATION D'UN BIEN
   updateProperty(property: Property, index) {
-    this.properties[index] = property;
-    this.emitProperties();
+    // this.properties[index] = property;
+    // this.saveProperties();
+    // this.emitProperties();
+    firebase.database().ref('/properties/' + index).update(property).catch(
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
 }
