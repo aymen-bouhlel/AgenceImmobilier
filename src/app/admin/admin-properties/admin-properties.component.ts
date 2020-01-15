@@ -111,6 +111,9 @@ export class AdminPropertiesComponent implements OnInit {
     console.log(event);
     this.propertiesService.uploadFile(event.target.files[0]).then(
       (url: string) => {
+        if (this.photoUrl && this.photoUrl !== '') {
+          this.propertiesService.removeFile(this.photoUrl);
+        }
         this.photoUrl = url;
         this.photoUploading = false;
         this.photoUploaded = true;

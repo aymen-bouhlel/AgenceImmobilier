@@ -86,4 +86,20 @@ export class PropertiesService {
     );
   }
 
+  // SUPPRESSION D'IMAGE (FILE)
+  removeFile(fileLink: string) {
+    if (fileLink) {
+      const storageRef = firebase.storage().refFromURL(fileLink);
+      storageRef.delete().then(
+        () => {
+          console.log('File deleted');
+        }
+      ).catch(
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+  }
+
 }
