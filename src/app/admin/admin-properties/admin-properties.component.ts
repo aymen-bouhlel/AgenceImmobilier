@@ -16,9 +16,15 @@ export class AdminPropertiesComponent implements OnInit {
   propertiesForm: FormGroup;
   propertiesSubscription: Subscription;
   properties: Property[] = [];
+
   indexToRemove;
+
   indexToUpdate;
   editMode = false;
+
+  photoUploading = false;
+  photoUploaded = false;
+  photoUrl: string;
 
   constructor( private formBuilder: FormBuilder,  private propertiesService: PropertiesService) { }
 
@@ -94,6 +100,21 @@ export class AdminPropertiesComponent implements OnInit {
       }
     );
     this.indexToUpdate = index;
+  }
+
+
+  onUploadFile(event) {
+    this.photoUploading = true;
+    this.propertiesService.uploadFile(event.target.files[0]).then(
+      (url: string) => {
+        this.photoUrl = url;
+        this.photoUploading = false;
+        this.photoUploaded = true;
+        setTimeout(() => {
+          this.photoUploaded = false;
+        }, 5000);
+      }
+    );
   }
 
 }

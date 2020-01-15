@@ -92,6 +92,23 @@
           <div class="form-group">
             <input type="text" placeholder="Prix" class="form-control" formControlName="price">
           </div>
+          <!-- UPLOAD IMAGE -->
+          <div class="form-row">
+            <div class="col-9">
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" (change)="onUploadFile($event)">
+                  <label class="custom-file-label" for="inputGroupFile01">Envoyer une image</label>
+                </div>
+              </div>
+            </div>
+            <!-- SPINNER -->
+            <div class="col-3">
+              <div class="spinner-border text-primary" role="status" *ngIf="photoUploading">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
           <!-- SWITCH: STATUS DE BIEN (VENDU / A VENDRE) -->
           <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="customSwitch1" formControlName="sold">
