@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -13,7 +14,8 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -28,13 +30,13 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  // ENVOIE DES DONNÉES DE FORMULAIRE DE LOGIN
+  // ENVOIE DES DONNÉES DE FORMULAIRE DE LOGIN DE L'ADMIN
   onSubmitSigninForm() {
     const email = this.signinForm.get('email').value;
     const password = this.signinForm.get('password').value;
-    this.authenticationService.signUpUser(email, password).then(
+    this.authenticationService.signInUser(email, password).then(
       (data) => {
-        console.log('OK');
+        this.router.navigate(['/admin', 'dashboard']);          // REDIRECTION VERS localhost:4200/admin/dashboard
       }
     ).catch(
       (error) => {

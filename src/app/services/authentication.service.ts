@@ -9,13 +9,13 @@ export class AuthenticationService {
   constructor() { }
 
   // SIGNIN
-  signUpUser(email: string, password: string) {
+  signInUser(email: string, password: string) {
     return new Promise (
       (resolve, reject) => {
-        firebase.auth().createUserWithEmailAndPassword(email, password).then(
-          () => {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(
+          (data) => {
             console.log('Connecté');
-            resolve();
+            resolve(data);
           }
         ).catch(
           (error) => {
