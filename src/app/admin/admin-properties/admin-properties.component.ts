@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PropertiesService } from 'src/app/services/properties.service';
 import * as $ from 'jquery';
-import type { Property } from 'src/app/interfaces/property';
+import { Property } from 'src/app/interfaces/property';
+
 
 @Component({
   selector: 'app-admin-properties',
