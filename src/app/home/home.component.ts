@@ -14,9 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
    propertiesSubscription: Subscription;
 
-  constructor(private propertiesService: PropertiesService) {
-
-  }
+  constructor(private propertiesService: PropertiesService) {}
 
   ngOnInit() {
     this.propertiesSubscription = this.propertiesService.propertiesSubject.subscribe(
@@ -24,6 +22,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.properties = data;
       }
     );
+    this.propertiesService.getProperties();
     this.propertiesService.emitProperties();
   }
 
@@ -33,6 +32,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       return 'green';
     }
+  }
+
+  onGoToSingleProperty(index) {
+
   }
 
   ngOnDestroy() {
