@@ -6,5 +6,5 @@ export interface Property {
   description?: string;     // LE (?) : CHAMP N'EST PAS OBLIGATOIR
   price: string;
   sold: boolean;
-  photo?: string;            // LE (?) : CHAMP N'EST PAS OBLIGATOIR
+  photos?: any[];            // LE (?) : CHAMP N'EST PAS OBLIGATOIR
 }

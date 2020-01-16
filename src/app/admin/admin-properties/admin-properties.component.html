@@ -12,7 +12,9 @@
         <div class="row">
           <!-- PHOTO -->
           <div class="col-3">
-            <img *ngIf="property.photo && property.photo !== '' " [src]="property.photo" alt="" class="w-100">
+            <div *ngFor="let photo of property.photos; let first = first">
+              <img *ngIf="first" [src]="photo" alt="" class="w-100">
+            </div>
           </div>
           <!-- TITLE -->
           <div class="col-9">
@@ -89,9 +91,14 @@
           <div class="form-group">
             <input type="text" placeholder="Prix" class="form-control" formControlName="price">
           </div>
-          <!-- FFICHE DE L'IMAGE -->
-          <div *ngIf="photoUrl && photoUrl !== '' " class="d-flex mb-3">
-            <img [src]="photoUrl" alt="" class="w-50 mx-auto">
+          <!-- AFFICHAGE DES IMAGES -->
+          <div class="row">
+            <div *ngFor="let photo of photosAdded; let i = index" class="col-4 border border-secondary rounded m-1 p-1 bg-light position-relative">
+              <span class="text-danger position-absolute mr-l deletePhoto" (click)="onRemoveAddedPhoto(i)">
+                <i class="fas fa-times"></i>
+              </span>
+              <img [src]="photo" class="w-100">
+            </div>
           </div>
           <!-- FILE UPLOAD -->
           <div class="form-row">
