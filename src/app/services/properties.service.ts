@@ -33,6 +33,23 @@ export class PropertiesService {
     });
   }
 
+  // RECUPÉRER UN SEUL BIEN
+  getSingleProperties(id) {
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref('/properties/' + id).once('value').then(
+          (data) => {
+            resolve(data.val());
+          }
+        ).catch(
+          (error) => {
+            reject(error);
+          }
+        );
+      }
+    );
+  }
+
   // CREATION D'UN BIEN
   createProperty(property: Property) {
     this.properties.push(property);
