@@ -4,11 +4,12 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SigninComponent } from './authentication/signin/signin.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },                       // localhost:4200/home
-  { path: 'admin/dashboard', component: AdminDashboardComponent},   // localhost:4200/admin/dashboard
+  { path: 'home', component: HomeComponent },                                                        // localhost:4200/home
+  { path: 'admin/dashboard', canActivate: [AuthGuardService], component: AdminDashboardComponent},   // localhost:4200/admin/dashboard
   { path: 'login', component: SigninComponent},                     // localhost:4200/login
   {path: 'property/:id', component: SinglePropertyComponent},       // localhost:4200/property/1
   {path: '', redirectTo: 'home', pathMatch: 'full'},                // path vide (localhost:4200) redirection sur la page home
